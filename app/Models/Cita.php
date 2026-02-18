@@ -2,18 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Cita extends Model
 {
-    use HasFactory;
+    protected $fillable = ['paciente_id', 'medico_id', 'fecha_hora', 'estado'];
 
-    // Le decimos qué campos se pueden insertar masivamente
-    protected $fillable = [
-        'paciente_id',
-        'medico_id',
-        'fecha_hora',
-        'estado'
-    ];
+    // Relación: Una cita pertenece a un paciente
+    public function paciente()
+    {
+        return $this->belongsTo(Paciente::class);
+    }
+
+    // Relación: Una cita pertenece a un médico
+    public function medico()
+    {
+        return $this->belongsTo(Medico::class);
+    }
 }
