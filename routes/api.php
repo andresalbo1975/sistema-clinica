@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ClinicaController;
+use App\Http\Controllers\Api\AuthController;
+
+Route::post('/login', [AuthController::class, 'login']);
 
 // Rutas GET para obtener datos
 Route::get('/pacientes', [ClinicaController::class, 'obtenerPacientes']);
